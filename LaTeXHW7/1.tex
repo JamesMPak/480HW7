@@ -1,0 +1,148 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\begin{document}
+\title{Math 480 Homework SVD updates}
+\author{James Pak}
+\date{May 22, 2013}
+\maketitle
+
+
+\section{Introduction\label{intro}}
+Consider the real matrix $X\label{X}{\epsilon}{\mathbb{R}^{p\mathrm{x}q}}$.
+Then the singular value decomposition (SVD) diagnolizes $X$ with orthonormal matrices $U \epsilon \mathbb{R}^{p\mathrm{x}p}$ and $V \epsilon \mathbb{R}^{q\mathrm{x}q}$
+Note that $S=U^TXV$.
+
+\subsection{Formula's\label{forumlas}}
+For Additive Modification, see Section~\ref{Additive}.
+For Rank-1 Modification, see Section~\ref{Rank}.
+
+\section{Additive Modification\label{Additive}}
+Let $A \epsilon \mathbb{R}^{p\mathrm{x}c}$ and $B \epsilon \mathbb{R}^{p\mathrm{x}c}$. Then
+$$
+X + AB^T =
+\begin{bmatrix}
+U & A
+\end{bmatrix}
+\begin{bmatrix}
+S & 0 \\
+0 & I
+\end{bmatrix}
+\begin{bmatrix}
+V & B
+\end{bmatrix}^T
+$$
+
+Furthermore, let P be the orthogonal basis of the column space of $(I-UU^T)A$ and $R_A=P^T(I-UU^T)A$
+$$
+\begin{bmatrix}
+U & A
+\end{bmatrix}
+=
+\begin{bmatrix}
+U & P
+\end{bmatrix}
+\begin{bmatrix}
+I & U^TA \\
+0 & R_A
+\end{bmatrix}
+$$.
+
+Let $QR_B=(I-VV^T)B$. Then
+$$
+X+AB^T =
+\begin{bmatrix}
+U & P
+\end{bmatrix}
+K
+\begin{bmatrix}
+V & Q
+\end{bmatrix}^T
+$$
+
+and
+
+$$
+K=
+\begin{bmatrix}
+I & U^TA\\
+0 & R_A
+\end{bmatrix}
+\begin{bmatrix}
+S & 0\\
+0 & I
+\end{bmatrix}
+\begin{bmatrix}
+I & V^TB\\
+0 & R_B
+\end{bmatrix}^T
+=
+\begin{bmatrix}
+S & 0\\
+0 & 0
+\end{bmatrix}
++
+\begin{bmatrix}
+U^TA\\
+R_A
+\end{bmatrix}
+\begin{bmatrix}
+V^TB\\
+R_B
+\end{bmatrix}^T
+$$.
+
+Diagonalizing $K$ as $U'^TKV'=S'$ give the rotations $U'$ and $V'$ of the extended subspaces
+$
+\begin{bmatrix}
+U & P
+\end{bmatrix}
+$
+and
+$
+\begin{bmatrix}
+V & Q
+\end{bmatrix}
+$
+such that
+$$
+X+AB^T = \left(
+\begin{bmatrix}
+U & P
+\end{bmatrix}
+U' \right)
+S'\left(
+\begin{bmatrix}
+V & Q
+\end{bmatrix}
+V'\right)^T
+$$
+is the desired SVD.
+
+
+\section{Rank-1 Modification\label{Rank}}
+
+\subsection{Update\label{Update}}
+\subsection{Downdate\label{Downdate}}
+\subsection{Revise\label{Revise}}
+\subsection{Recenter\label{Recenter}}
+
+For each operate in subsection~\ref{Update}~-~\ref{Recenter}
+
+\begin{enumerate}
+\item Known for~\ref{Update}:
+$$US\begin{bmatrix}V^T & 0 \end{bmatrix}= \begin{bmatrix}X & 0\end{bmatrix}$$
+\item Known for~\ref{Downdate}:
+$$USV^T= \begin{bmatrix}X & c\end{bmatrix}$$
+\item Known for~\ref{Revise}:
+$$USV^T= \begin{bmatrix}X & c\end{bmatrix}$$
+\item Known for~\ref{Recenter}:
+$$USV^T= X$$
+\end{enumerate}
+
+\section{Reference\label{Reference}}
+All work within this paper is taken from Matthew Brand's article on \href{http://www.stat.osu.edu/~dmsl/thinSVDtracking.pdf}{"Fast low-rank modifications of the thing singular value decomposition."}
+
+\end{document}
